@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,usre-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				padding:1rem;
+				margin:2rem auto 0;
+				box-shadow:0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				text-align:center;
+				line-height:2rem;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>谢尔（Shell）排序算法</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>谢尔排序</h3>
+				<ul>
+					<li>核心思想：也叫缩小增量排序法。首先确定一个元素的间隔数gap。将参加排序的元素按照gap分隔成若干子序列，然后对各个子序列采用某一种排序方法进行排序；此后减少gap值，重复上述过程，直到gap小于1。</li>
+					<li>时间复杂度在O(nlog2^n)与O(n^2)之间，小于O(n^3/2);时间复杂度和gap分割方法有关；是一种非稳定性排序方法。</li>
+				</ul>
+			</section>
+		</main>
+		<script type="text/javascript">
+			function shellSort(arr,len){
+				var gap = len % 2 === 0 ? len : len+1 ;
+				var flag;
+				while(gap > 1){
+					gap = gap / 2;
+					do{
+						flag = 0;
+						for(var i=0; i<len - gap; i++){
+							var j = i + gap ;
+							if(arr[i] > arr[j]){
+								var temp = arr[i];
+								arr[i] = arr[j];
+								arr[j] = temp;
+								flag = 1;
+							}
+						}
+					}while(flag != 0);
+				}
+				return arr;
+			}
+			var arr1 = [23,45,33,11,23,67,86,43];
+			var len1 = arr1.length;
+			var result = shellSort(arr1,len1);
+			console.log(result);
+		</script>
+	</body>
+</html>

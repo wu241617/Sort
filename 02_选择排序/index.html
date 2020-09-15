@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+
+			html {
+				font-size: 20px;
+			}
+
+			main,
+			section {
+				display: block;
+			}
+
+			main {
+				width: 30rem;
+				height: auto;
+				padding: 1rem;
+				margin: 2rem auto 0;
+				box-shadow: 0 0 0.5rem 0.5rem #666;
+				border-radius: 1rem;
+				font-size: 0.7rem;
+				font-family: 微软雅黑;
+			}
+
+			h3 {
+				width: 100%;
+				height: 2rem;
+				text-align: center;
+				line-height: 2rem;
+				background-color: black;
+				color: white;
+				margin: 0.5rem 0;
+			}
+
+			ul {
+				list-style-position: inside;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				padding: 1rem;
+			}
+
+			ul>li {
+				margin: 0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px) {
+				main {
+					width: auto;
+					height: auto;
+					padding: 0;
+					margin: 0;
+				}
+			}
+		</style>
+		<title>JS——选择排序算法</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>选择排序</h3>
+				<ul>
+					<li>核心思想：一共n-1趟，每趟从未排序的元素中选出一个值最小的元素放在这些未排序元素的最前面，直到最后一个。</li>
+					<li>实现步骤：1，在未排序元素中找到最小的那个元素；2，插入到未排序元素的第一个。</li>
+					<li>时间复杂度未O(n^2);元素之间的比较次数与原始序列中元素的分布状态无关；是一种非稳定性排序方法。（非稳定是指，有相同元素时，进行排序，会改变其位置）</li>
+				</ul>
+			</section>
+		</main>
+		<script>
+			function selectionSort(arr) {
+				// 获取数组的长度
+				var length = arr.length;
+				// 标记第 i 个最小值下标
+				var indexMin;
+				// 外层循环，n-1趟
+				for (var i = 0; i < length - 1; i++) {
+					// 最小值下标初始化，从i开始找
+					indexMin = i;
+					// 内层循环，从i到length之间查找这一趟的最小值
+					for (var j = i; j < length; j++) {
+						if (arr[indexMin] > arr[j]) {
+							indexMin = j;
+						}
+					}
+					// 交换元素，这一趟最小值和第i个元素
+					if (i !== indexMin) {
+						swap(arr, i, indexMin);
+					}
+				}
+				return arr;
+			}
+
+			function swap(arr, index1, index2) {
+				var temp = arr[index1];
+				arr[index1] = arr[index2];
+				arr[index2] = temp;
+			}
+
+			var arr1 = [34, 66, 33, 23, 67, 97, 43, 22, 45];
+			var result = selectionSort(arr1);
+			console.log(result);
+		</script>
+	</body>
+</html>

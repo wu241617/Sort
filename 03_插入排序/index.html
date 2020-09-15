@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+
+			html {
+				font-size: 20px;
+			}
+
+			main,
+			section {
+				display: block;
+			}
+
+			main {
+				width: 30rem;
+				height: auto;
+				padding: 1rem;
+				margin: 2rem auto 0;
+				box-shadow: 0 0 0.5rem 0.5rem #666;
+				border-radius: 1rem;
+				font-size: 0.7rem;
+				font-family: 微软雅黑;
+			}
+
+			h3 {
+				width: 100%;
+				height: 2rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: black;
+				color: white;
+				margin: 0.5rem 0;
+			}
+
+			ul {
+				list-style-position: inside;
+				padding: 1rem;
+			}
+
+			ul>li {
+				margin: 0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>JS——插入排序算法</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS——插入排序算法</h3>
+				<ul>
+					<li>核心思想：从第2个元素开始，一共n-1趟，每趟将未排序的第一个元素插入到已排序的元素的合适位置，直到最后一个元素。</li>
+					<li>算法步骤:1,对比确定插入位置；2,插入元素</li>
+					<li>插入排序算法的改进：如果初始序列比较有序，从大到小，从左边开始查找定位；从小到大，从右边开始查找定位。如果初始序列是无序的，采用二分查找的方式去定位。</li>
+					<li>时间复杂度为O(n^2);是一种稳定性排序方法。（稳定排序算法是指，相同的两个值，排序下来位置不变的。）</li>
+				</ul>
+			</section>
+		</main>
+		<script type="text/javascript">
+			function insertionSort(arr) {
+				// 记录数组的长度
+				var len = arr.length;
+				// 声明的变量
+				var j,temp;
+				// 外层循环，控制趟数，从第二个元素开始，总共n-1趟
+				for (var i = 1; i < len; i++) {
+					// 标记第几趟就是第几个元素进行插入定位排序
+					j = i;
+					// 存储当前要定位插入排序的元素
+					temp = arr[i];
+					// 内层循环，查找定位，进行元素插入
+					while (j > 0 && arr[j - 1] > temp) {
+						arr[j] = arr[j - 1];
+						j--;
+					}
+					arr[j] = temp;
+				}
+			}
+			
+			var arr1 = [34,56,32,54,11,35,78,43,21];
+			insertionSort(arr1);
+			console.log(arr1);
+		</script>
+	</body>
+</html>
