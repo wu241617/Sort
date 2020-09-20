@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+			}
+			html{
+				font-size:20px;
+			}
+			main,section{
+				display:block;
+			}
+			main{
+				width:30rem;
+				height:auto;
+				margin:2rem auto 0;
+				padding:1rem;
+				box-shadow: 0 0 0.5rem 0.5rem #666;
+				border-radius:1rem;
+				font-size:0.7rem;
+				font-family:微软雅黑;
+			}
+			h3{
+				width:100%;
+				height:2rem;
+				line-height:2rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+				margin:0.5rem 0;
+			}
+			ul{
+				list-style-position:inside;
+				padding:1rem;
+			}
+			ul>li{
+				margin:0.5rem 0;
+			}
+		</style>
+		<style>
+			@media (max-width:450px){
+				main{
+					width:auto;
+					height:auto;
+					padding:1=0;
+					margin:0;
+				}
+			}
+		</style>
+		<title>插入排序算法</title>
+	</head>
+	<body>
+		<main>
+			<section>
+				<h3>JS_插入排序算法</h3>
+				<ul>
+					<li></li>
+				</ul>
+			</section>
+		</main>
+		<script type="text/javascript">
+			function sort1(array){
+				for(var i=1; i<array.length; i++){
+					for(var j=0; j<i; j++){
+						if(array[j] > array[i]){
+							var temp = array[j];
+							array[j] = array[i];
+							array[i] = temp;
+							break;
+						}
+					}
+				}
+				return array;
+			}
+			var arr = [23,45,57,38,24,19,61];
+			console.log(sort1(arr));
+		</script>
+	</body>
+</html>
